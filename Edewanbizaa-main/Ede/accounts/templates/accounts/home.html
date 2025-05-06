@@ -1,0 +1,23 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}Home - Authentication System{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h1 class="display-4">Welcome to the Authentication System</h1>
+    <p class="lead">A secure and user-friendly authentication system built with Django.</p>
+    
+    {% if user.is_authenticated %}
+        <div class="mt-4">
+            <h2>Welcome back, {{ user.username }}!</h2>
+            <p>Head to your <a href="{% url 'dashboard' %}" class="btn btn-primary">Dashboard</a></p>
+        </div>
+    {% else %}
+        <div class="mt-4">
+            <p>Get started by creating an account or logging in:</p>
+            <a href="{% url 'register' %}" class="btn btn-primary me-2">Register</a>
+            <a href="{% url 'login' %}" class="btn btn-outline-primary">Login</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %} 
